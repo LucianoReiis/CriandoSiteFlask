@@ -1,4 +1,4 @@
-from comunidadeimpressionadoradora import database
+from comunidadeimpressionadora import database
 from datetime import datetime
 
 

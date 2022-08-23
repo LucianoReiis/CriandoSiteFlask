@@ -9,4 +9,4 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///comunidade.db'
 
 database = SQLAlchemy(app)
 
-from comunidadeimpressionadoradora import routes
+from comunidadeimpressionadora import routes
