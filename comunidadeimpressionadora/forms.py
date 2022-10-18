@@ -1,14 +1,14 @@
-from xml.dom import ValidationErr
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from comunidadeimpressionadora.models import Usuario
 
+
 class FormCriarConta(FlaskForm):
-    username = StringField('Nome de Usúario', validators=[ DataRequired()])
-    email =  StringField('E-mail', validators=[DataRequired(), Email()])
+    username = StringField('Nome de Usuário', validators=[DataRequired()])
+    email = StringField('E-mail', validators=[DataRequired(), Email()])
     senha = PasswordField('Senha', validators=[DataRequired(), Length(6, 20)])
-    confirmacao_senha = PasswordField('Confirmação de Senha', validators=[DataRequired(), EqualTo('senha')])
+    confirmacao_senha = PasswordField('Confirmação da Senha', validators=[DataRequired(), EqualTo('senha')])
     botao_submit_criarconta = SubmitField('Criar Conta')
 
     def validate_email(self, email):
@@ -17,10 +17,8 @@ class FormCriarConta(FlaskForm):
             raise ValidationError('E-mail já cadastrado. Cadastre-se com outro e-mail ou faça login para continuar')
 
 
-
-
 class FormLogin(FlaskForm):
-    email =  StringField('E-mail', validators=[DataRequired(), Email()])
+    email = StringField('E-mail', validators=[DataRequired(), Email()])
     senha = PasswordField('Senha', validators=[DataRequired(), Length(6, 20)])
     lembrar_dados = BooleanField('Lembrar Dados de Acesso')
     botao_submit_login = SubmitField('Fazer Login')
