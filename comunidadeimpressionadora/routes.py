@@ -7,7 +7,7 @@ import secrets
 import os
 from PIL import Image
 
-lista_usuarios = ['Lira', 'João', 'Alon', 'Alessandra', 'Amanda']
+
 
 
 @app.route('/')
@@ -23,6 +23,7 @@ def contato():
 @app.route('/usuarios')
 @login_required
 def usuarios():
+    lista_usuarios = Usuario.query.all()
     return render_template('usuarios.html', lista_usuarios=lista_usuarios)
 
 
@@ -78,7 +79,7 @@ def salvar_imagem(imagem):
     nome, extensao = os.path.splitext(imagem.filename)
     nome_arquivo = nome + codigo + extensao
     caminho_completo = os.path.join(app.root_path, 'static/fotos_perfil', nome_arquivo)
-    tamanho = (400, 400)
+    tamanho = (200, 200)
     imagem_reduzida = Image.open(imagem)
     imagem_reduzida.thumbnail(tamanho)
     imagem_reduzida.save(caminho_completo)
